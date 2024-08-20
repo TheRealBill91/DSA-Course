@@ -4,14 +4,25 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Debug Current TS File",
+            "runtimeExecutable": "node",
             "runtimeArgs": [
+                "--nolazy",
                 "-r",
-                "ts-node/register"
+                "ts-node/register/transpile-only"
             ],
             "args": [
                 "${relativeFile}"
-            ]
+            ],
+            "cwd": "${workspaceRoot}",
+            "internalConsoleOptions": "openOnSessionStart",
+            "skipFiles": [
+                "<node_internals>/**",
+                "node_modules/**"
+            ],
+            // "env": {
+            //     "TS_NODE_PROJECT": "${workspaceFolder}/tsconfig.json"
+            // }
         }
     ]
 }

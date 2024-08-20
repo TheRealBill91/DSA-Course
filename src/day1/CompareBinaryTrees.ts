@@ -1,40 +1,4 @@
-type BinaryNode<T> = {
-    value: T;
-    left: BinaryNode<T> | null;
-    right: BinaryNode<T> | null;
-};
-
-export const tree: BinaryNode<number> = {
-    value: 20,
-    right: {
-        value: 50,
-        right: null,
-        left: null,
-    },
-    left: {
-        value: 10,
-        right: null,
-        left: null,
-    },
-};
-
-export const tree2: BinaryNode<number> = {
-    value: 20,
-    right: {
-        value: 50,
-        right: {
-            value: 24,
-            right: null,
-            left: null,
-        },
-        left: null,
-    },
-    left: {
-        value: 10,
-        right: null,
-        left: null,
-    },
-};
+import { tree3, tree4 } from "@test/tree";
 
 export default function compare(
     a: BinaryNode<number> | null,
@@ -55,4 +19,4 @@ export default function compare(
     return compare(a.left, b.left) && compare(a.right, b.right);
 }
 
-compare(tree, tree2);
+compare(tree3, tree4);

@@ -18,7 +18,7 @@ export const tree: BinaryNode<number> = {
                 value: 29,
                 right: null,
                 left: null,
-            }
+            },
         },
     },
     left: {
@@ -36,8 +36,8 @@ export const tree: BinaryNode<number> = {
                 left: null,
             },
             left: null,
-        }
-    }
+        },
+    },
 };
 
 export const tree2: BinaryNode<number> = {
@@ -64,7 +64,7 @@ export const tree2: BinaryNode<number> = {
                     right: null,
                     left: null,
                 },
-            }
+            },
         },
     },
     left: {
@@ -82,6 +82,38 @@ export const tree2: BinaryNode<number> = {
                 left: null,
             },
             left: null,
-        }
-    }
+        },
+    },
+};
+
+export const tree3: BinaryNode<number> = {
+    value: 20,
+    right: {
+        value: 50,
+        right: null,
+        left: null,
+    },
+    left: {
+        value: 10,
+        right: null,
+        left: null,
+    },
+};
+
+export const tree4: BinaryNode<number> = {
+    value: 20,
+    right: {
+        value: 50,
+        right: {
+            value: 24,
+            right: null,
+            left: null,
+        },
+        left: null,
+    },
+    left: {
+        value: 10,
+        right: null,
+        left: null,
+    },
 };

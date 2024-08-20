@@ -1,7 +1,22 @@
-/* import { matrix2 } from "__tests__/graph";
- */
+//     >(1)<--->(4) ---->(5)
+//    /          |       /|
+// (0)     ------|------- |
+//    \   v      v        v
+//     >(2) --> (3) <----(6)
+
+//       0  1  2  3  4  5  6
+//    +----------------------
+//  0  | 0  3  1  0  0  0  0
+//  1  | 0  0  0  0  1  0  0
+//  2  | 0  0  7  0  0  0  0
+//  3  | 0  0  0  0  0  0  0
+//  4  | 0  1  0  5  0  2  0
+//  5  | 0  0 18  0  0  0  1
+//  6  | 0  0  0  1  0  0  1
+
 export const matrix2: WeightedAdjacencyMatrix = [
-    [0, 3, 1, 0, 0, 0, 0], // 0
+    //prettier-ignore
+    [0, 3, 1, 0, 0, 0, 0],
     [0, 0, 0, 0, 1, 0, 0],
     [0, 0, 7, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
@@ -10,8 +25,14 @@ export const matrix2: WeightedAdjacencyMatrix = [
     [0, 0, 0, 1, 0, 0, 1],
 ];
 
-type WeightedAdjacencyMatrix = number[][]; // A number means weight
-
+/**
+ * Performs a breadth-first search (BFS) on a weighted adjacency matrix graph to find the shortest path from a source node to a target (needle) node.
+ *
+ * @param {WeightedAdjacencyMatrix} graph - The weighted adjacency matrix representing the graph.
+ * @param {number} source - The starting node for the BFS.
+ * @param {number} needle - The target node to find in the graph.
+ * @returns {number[] | null} An array representing the path from the source to the needle, or null if no path is found.
+ */
 export default function bfs(
     graph: WeightedAdjacencyMatrix,
     source: number,
@@ -21,6 +42,7 @@ export default function bfs(
 
     const prev = new Array(graph.length).fill(-1);
 
+    // saying we have already visited the place we started at
     seen[source] = true;
     const q: number[] = [source];
 
@@ -37,12 +59,14 @@ export default function bfs(
                 continue;
             }
 
+            // have not visited this vertex
             if (seen[i]) {
                 continue;
             }
 
             seen[i] = true;
             prev[i] = curr;
+            // pushing in the node (row) we need to visit
             q.push(i);
         }
         seen[curr] = true;
@@ -65,4 +89,4 @@ export default function bfs(
     return [source].concat(out.reverse());
 }
 
-bfs(matrix2, 6, 0);
+console.log(bfs(matrix2, 0, 6));
